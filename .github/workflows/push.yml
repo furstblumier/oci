@@ -17,7 +17,7 @@ jobs:
   list-dockerfiles:
     runs-on: ubuntu-latest
     outputs:
-      matrix: ${{ steps.set-dockerfiles.outputs.dockerfiles }}
+      dockerfiles: ${{ steps.set-dockerfiles.outputs.dockerfiles }}
     steps:
       - uses: actions/checkout@v2
       - id: set-dockerfiles
