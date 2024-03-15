@@ -17,17 +17,17 @@ jobs:
   list-dockerfiles:
     runs-on: ubuntu-latest
     outputs:
-      matrix: ${{ steps.set-matrix.outputs.matrix }}
+      matrix: ${{ steps.set-dockerfiles.outputs.dockerfiles }}
     steps:
       - uses: actions/checkout@v2
-      - id: set-matrix
-        run: echo "dockerfile=$(ls dockerfiles/*.dockerfile | jq -R -s -c 'split("\n")[:-1]')" >> $GITHUB_OUTPUT
+      - id: set-dockerfiles
+        run: echo "dockerfiles=$(ls dockerfiles/*.dockerfile | jq -R -s -c 'split("\n")[:-1]')" >> $GITHUB_OUTPUT
   build:
     needs: list-dockerfiles
     runs-on: ubuntu-latest
     strategy:
         matrix:
-            dockerfiles: ${{ fromJson(needs.list-dockerfiles.outputs.dockerfile) }}
+            dockerfiles: ${{ fromJson(needs.list-dockerfiles.outputs.dockerfiles) }}
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
