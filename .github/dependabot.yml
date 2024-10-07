@@ -9,7 +9,9 @@ updates:
   - package-ecosystem: "docker"
     # Look for a `Dockerfile` in the `root` directory
     # wait til https://github.com/dependabot/dependabot-core/issues/2178 is fixed
-    directory: "/dockerfiles/nfs"
+    # looks like it is now :3
+    directories: 
+    - "/dockerfiles/*"
     # Check for updates once a week
     schedule:
       interval: "weekly"
