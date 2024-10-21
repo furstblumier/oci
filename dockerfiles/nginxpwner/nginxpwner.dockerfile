@@ -10,6 +10,7 @@ WORKDIR /nginxpwner
 #          dpkg -i gobuster_2.0.1-1_amd64.deb && rm gobuster_2.0.1-1_amd64.deb
 RUN echo "deb http://http.kali.org/kali kali-rolling main contrib non-free non-free-firmware" | tee /etc/apt/sources.list &&\
     wget -q -O - 'https://gitlab.com/kalilinux/packages/kali-archive-keyring/-/raw/kali/master/archive-key.asc' |  apt-key add &&\
+    apt-get update &&\
     apt-get install gobuster &&\
     apt-get autoremove
 # kyubi install
