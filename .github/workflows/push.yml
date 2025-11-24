@@ -27,7 +27,7 @@ jobs:
     outputs:
       dockerfiles: ${{ steps.set-dockerfiles.outputs.dockerfiles }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - id: set-dockerfiles
         run: echo "dockerfiles=$(basename -a dockerfiles/* | jq -R -s -c 'split("\n")[:-1]')" >> $GITHUB_OUTPUT
   build:
@@ -42,7 +42,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       # setup qemu for multi arch
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
