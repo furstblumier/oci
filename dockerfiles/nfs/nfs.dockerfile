@@ -1,4 +1,4 @@
-FROM alpine:3.24.0
+FROM alpine:3.24.2
 
 ENV NFS_DIR="/share" \
     NFS_DOMAIN="*" \
